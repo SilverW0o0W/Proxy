@@ -38,7 +38,7 @@ class TestAlchemy(unittest.TestCase):
         self.assertEqual(2, count)
 
 
-if __name__ == '__main__':
+def test_alchemy():
     suite = unittest.TestSuite()
     suite.addTest(TestAlchemy("test_merge"))
     suite.addTest(TestAlchemy("test_delete"))
@@ -47,3 +47,7 @@ if __name__ == '__main__':
     suite.addTest(TestAlchemy("test_available_count"))
     runner = unittest.TextTestRunner(verbosity=2)
     runner.run(suite)
+
+
+if __name__ == '__main__':
+    test_alchemy()
