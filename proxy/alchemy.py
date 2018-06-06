@@ -91,7 +91,7 @@ class DBWorker(object):
     @session_watcher(True)
     def delete(self, id, session=None):
         proxy = session.query(ProxyBase).get(id)
-        session.delete(proxy)
+        return session.delete(proxy)
 
     @session_watcher(False)
     def query_available(self, time, count=None, session=None):
