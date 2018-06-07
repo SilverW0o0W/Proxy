@@ -32,8 +32,8 @@ class Controller(object):
 
     _http_url = 'http://info.cern.ch/'
     _http_title = 'http://info.cern.ch'
-    _https_url = ''
-    _https_title = ''
+    _https_url = 'https://cn.bing.com/'
+    _https_title = u'微软 Bing 搜索 - 国内版'
     _proxy_split = 3
 
     _process_stop_file = 'proxy.stop'
@@ -85,7 +85,7 @@ class Controller(object):
         with requests.Session() as session:
             try:
                 session.keep_alive = False
-                response = session.get(url, proxies=proxies, timeout=15)
+                response = session.get(url, proxies=proxies, timeout=15, verify=False)
                 proxy.available = self.check_response(response, url)
             except requests.exceptions.RequestException:
                 proxy.available = False
@@ -105,6 +105,7 @@ class Controller(object):
         soup = BeautifulSoup(response.text, "html.parser")
         title = soup.title
         check_title = self._https_title if self.https else self._http_title
+        print(title.string)
         return title is not None and title.string == check_title
 
     def add_proxy(self, proxy):
