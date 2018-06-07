@@ -16,13 +16,9 @@ class TestAlchemy(unittest.TestCase):
         proxy1 = Proxy('123.123.123.123', '80', False, available=False)
         proxy2 = Proxy('123.123.123.123', '81', False, available=True)
         proxy3 = Proxy('123.123.123.123', '82', False, available=True)
-        # with self.assertRaises(Exception):
-        #     self.worker.merge([proxy1, proxy2])
         self.failUnlessRaises(self.worker.merge([proxy1, proxy2, proxy3]))
 
     def test_delete(self):
-        # with self.assertRaises(Exception):
-        #     self.worker.delete(1)
         self.failUnlessRaises(self.worker.delete(1))
 
     def test_query_available(self):

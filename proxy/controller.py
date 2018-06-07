@@ -85,7 +85,10 @@ class Controller(object):
         with requests.Session() as session:
             try:
                 session.keep_alive = False
-                response = session.get(url, proxies=proxies, timeout=15, verify=False)
+                if self.https:
+                    response = session.get(url, proxies=proxies, timeout=30, verify=False)
+                else:
+                    response = session.get(url, proxies=proxies, timeout=15)
                 proxy.available = self.check_response(response, url)
             except requests.exceptions.RequestException:
                 proxy.available = False
@@ -105,7 +108,6 @@ class Controller(object):
         soup = BeautifulSoup(response.text, "html.parser")
         title = soup.title
         check_title = self._https_title if self.https else self._http_title
-        print(title.string)
         return title is not None and title.string == check_title
 
     def add_proxy(self, proxy):
