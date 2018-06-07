@@ -6,9 +6,11 @@ from proxy.proxy import Proxy
 
 
 class TestAlchemy(unittest.TestCase):
-    time_str = datetime.now().strftime("%Y%m%d%H%M%S")
-    test_con_string = 'sqlite:///test_{}.db'.format(time_str)
-    worker = DBWorker(test_con_string)
+    def __init__(self):
+        unittest.TestCase.__init__(self)
+        time_str = datetime.now().strftime("%Y%m%d%H%M%S")
+        test_con_string = 'sqlite:///test_{}.db'.format(time_str)
+        self.worker = DBWorker(test_con_string)
 
     def test_merge(self):
         proxy1 = Proxy('123.123.123.123', '80', False, available=False)

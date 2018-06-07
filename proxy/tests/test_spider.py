@@ -1,6 +1,6 @@
 # coding=utf-8
 import unittest
-from datetime import datetime, timedelta
+from datetime import datetime
 from proxy.spider import Spider
 from logger.logger import Logger
 
@@ -8,6 +8,7 @@ from logger.logger import Logger
 class TestSpider(unittest.TestCase):
 
     def __init__(self):
+        unittest.TestCase.__init__(self)
         time_str = datetime.now().strftime("%Y%m%d%H%M%S")
         name = 'test_{}.log'.format(time_str)
         self.logger = Logger(name=name)

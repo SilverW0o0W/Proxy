@@ -50,7 +50,6 @@ class Controller(object):
     _cache_proxy_set = ProxySet()
 
     def __init__(self, logger, https):
-        # self.logger = Logger(name='proxy.log')
         self.logger = logger
         self.https = https
         self.spider = Spider(self.logger)
@@ -88,7 +87,7 @@ class Controller(object):
                 session.keep_alive = False
                 response = session.get(url, proxies=proxies, timeout=15)
                 proxy.available = self.check_response(response, url)
-            except requests.exceptions.RequestException as ex:
+            except requests.exceptions.RequestException:
                 proxy.available = False
         return proxy.available
 
