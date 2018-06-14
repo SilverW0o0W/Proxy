@@ -7,7 +7,7 @@ setup(
     install_requires=[
         'beautifulsoup4',
         'requests',
-        'threadpool',
+        'gevent',
         'sqlalchemy',
     ],
 
