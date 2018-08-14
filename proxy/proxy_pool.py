@@ -219,7 +219,11 @@ class ProxyPool(object):
             proxy = self._cache_proxy_set.pop()
         return proxy
 
-    def convert_proxies(self, sql_proxies):
+    def export_proxy(self):
+        pass
+
+    @staticmethod
+    def convert_proxies(sql_proxies):
         """
         Convert data from db to proxy_ip instance
         """
