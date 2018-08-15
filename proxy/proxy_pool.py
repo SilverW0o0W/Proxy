@@ -40,10 +40,7 @@ class Proxy(object):
         self.verified = verified if verified else now
         self.created = created if created else now
 
-    def ip_port(self):
-        """
-        Get ip:port string.
-        """
+    def __str__(self):
         return self.ip + ':' + self.port
 
     def unique_id(self):
@@ -141,7 +138,7 @@ class ProxyPool(object):
         Check proxy available. Timeout: 15s. Retry: 3 times.
         """
         transfer_method = 'https' if self.https else 'http'
-        proxies = {transfer_method: proxy.ip_port()}
+        proxies = {transfer_method: str(proxy)}
         url = self._https_url if self.https else self._http_url
         requests.adapters.DEFAULT_RETRIES = 3
         with requests.Session() as session:
@@ -219,8 +216,15 @@ class ProxyPool(object):
             proxy = self._cache_proxy_set.pop()
         return proxy
 
-    def export_proxy(self):
-        pass
+    def export(self, path, count=30):
+        name = 'proxy.txt'
+        if os.path.exists(path):
+            proxies = self.select_proxies(count)
+        file_path = r'{0}/{1}'.format(path, name)
+        with open(file_path, 'w') as f:
+            for proxy in proxies:
+                f.write(str(proxy))
+                f.write('\n')
 
     @staticmethod
     def convert_proxies(sql_proxies):
