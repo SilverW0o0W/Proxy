@@ -216,11 +216,11 @@ class ProxyPool(object):
             proxy = self._cache_proxy_set.pop()
         return proxy
 
-    def export(self, path, count=30):
-        name = 'proxy.txt'
+    def export(self, path, count=30, file_name='ip.txt'):
+        proxies = []
         if os.path.exists(path):
             proxies = self.select_proxies(count)
-        file_path = r'{0}/{1}'.format(path, name)
+        file_path = r'{0}/{1}'.format(path, file_name)
         with open(file_path, 'w') as f:
             for proxy in proxies:
                 f.write(str(proxy))
