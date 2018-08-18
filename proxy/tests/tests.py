@@ -1,25 +1,42 @@
 # coding=utf-8
-import test_alchemy
-import test_spider
+import traceback
+# import test_alchemy
+# import test_spider
 from logger.logger import Logger
-from proxy.controller import Controller
+from proxy.proxy_pool import ProxyPool
 import time
 
 
-def tests():
-    test_alchemy.test_alchemy()
-    test_spider.test_spider()
+# def tests():
+#     test_alchemy.test_alchemy()
+#     test_spider.test_spider()
 
 
 def test_start():
-    log = Logger(name='proxy.log')
-    controller = Controller(log, False)
-    time.sleep(120)
-    proxy = controller.get_proxy()
-    controller.dispose()
+    try:
+        log = Logger(name='proxy.log')
+        controller = ProxyPool(log, False)
+        # proxies = controller.spider.get_proxies(False)
+        # controller.add_proxies(proxies)
+
+        time.sleep(120)
+        controller.export(r'D:\\')
+
+        # proxy = controller.get_proxy()
+        # controller.dispose()
+        # controller.logger.dispose()
+    except Exception:
+        print(traceback.format_exc())
 
 
 if __name__ == '__main__':
-    tests()
-    # test_start()
-
+    # tests()
+    test_start()
+    # res = requests.head('http://www.baidu.com', proxies={'http': '61.135.217.7:80'})
+    # res = requests.get('https://cn.bing.com/', verify=False)
+    # soup = BeautifulSoup(res.text, "html.parser")
+    # title = soup.title
+    # str = title.string
+    # if str == u'微软 Bing 搜索 - 国内版':
+    #     print('haha')
+    # print(res)
