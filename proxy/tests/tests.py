@@ -3,7 +3,7 @@ import traceback
 # import test_alchemy
 # import test_spider
 from logger.logger import Logger
-from proxy.proxy_pool import ProxyPool
+import proxy.proxy_pool as pool
 import time
 
 
@@ -15,7 +15,7 @@ import time
 def test_start():
     try:
         log = Logger(name='proxy.log')
-        controller = ProxyPool(log, False)
+        controller = pool.ProxyPool(log, False)
         # proxies = controller.spider.get_proxies(False)
         # controller.add_proxies(proxies)
 

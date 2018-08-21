@@ -8,7 +8,7 @@ from datetime import datetime, timedelta
 
 import requests
 from bs4 import BeautifulSoup
-from .proxy_pool import Proxy
+import proxy_pool as pool
 
 
 class Spider(object):
@@ -70,4 +70,4 @@ class Spider(object):
         if not tds[4].contents[0] == u'高匿':
             return
         is_https = tds[5].contents[0] == 'HTTPS'
-        return Proxy(tds[1].contents[0], tds[2].contents[0], is_https)
+        return pool.Proxy(tds[1].contents[0], tds[2].contents[0], is_https)
