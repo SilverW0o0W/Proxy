@@ -220,6 +220,7 @@ class ProxyPool(object):
         proxies = []
         if os.path.exists(path):
             proxies = self.select_proxies(count)
+            proxies = self.convert_proxies(proxies)
         file_path = r'{0}/{1}'.format(path, file_name)
         with open(file_path, 'w') as f:
             for proxy in proxies:
