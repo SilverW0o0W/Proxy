@@ -1,4 +1,5 @@
-# coding=utf-8
+#!/usr/bin/env python
+# -*- encoding: utf-8 -*-
 """
 This is for crawling proxy ip from ip website.
 """
