@@ -3,7 +3,7 @@ import traceback
 # import test_alchemy
 # import test_spider
 from logger.logger import Logger
-import proxy.proxy_pool as pool
+import proxy.proxy as pool
 import time
 
 
