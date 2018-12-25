@@ -9,6 +9,7 @@ import traceback
 import requests
 from bs4 import BeautifulSoup
 from proxy.spider.spider import Spider
+from proxy.proxy import Proxy
 
 
 class XiciSpider(Spider):

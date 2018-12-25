@@ -29,14 +29,13 @@ class Proxy(object):
     This is the class for ip information.
     """
 
-    def __init__(self, ip, port, https, available=False, verified=None, created=None, id=None):
-        self.id = id
+    def __init__(self, ip, port, https, available=False, verified=None, created=None):
         self.ip = ip
         self.port = port
         self.https = https
         self.unique_id = self.unique_id()
         self.available = available
-        now = datetime.now()
+        now = time.time()
         self.verified = verified if verified else now
         self.created = created if created else now
 
