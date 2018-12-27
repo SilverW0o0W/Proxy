@@ -29,27 +29,17 @@ class Proxy(object):
     This is the class for ip information.
     """
 
-    def __init__(self, ip, port, https, available=False, verified=None, created=None):
+    def __init__(self, ip, port, protocol, score=20, verified=None, created=None):
         self.ip = ip
         self.port = port
-        self.https = https
-        self.unique_id = self.unique_id()
-        self.available = available
+        self.protocol = protocol
+        self.score = score
         now = time.time()
         self.verified = verified if verified else now
         self.created = created if created else now
 
     def __str__(self):
         return self.ip + ':' + self.port
-
-    def unique_id(self):
-        unique_id = ''
-        nums = self.ip.split('.')
-        for num in nums:
-            unique_id += num.zfill(3)
-        unique_id += self.port
-        unique_id += '1' if self.https else '0'
-        return unique_id
 
 
 class ProxyList(object):
