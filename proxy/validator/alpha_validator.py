@@ -10,20 +10,14 @@ https_url = ""
 
 class IPValidator(Validator):
 
-    def __init__(self, protocol):
+    def __init__(self):
+        pass
 
     @staticmethod
-    def check_proxy(proxy, protocol):
+    def check_proxy(proxy):
         """
         Check proxy available. Timeout: 15s. Retry: 3 times.
         """
-        if https:
-            url = https_url
-            transfer_method = "https"
-        else:
-            url = http_url
-            transfer_method = "http"
-
         proxies = {transfer_method: str(proxy)}
         requests.adapters.DEFAULT_RETRIES = 3
         with requests.Session() as session:
@@ -40,6 +34,7 @@ class IPValidator(Validator):
                 print(ex)
         return proxy.available
 
+    @staticmethod
     def check_response(response, url):
         """
         Check response content

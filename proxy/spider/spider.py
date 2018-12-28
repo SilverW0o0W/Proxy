@@ -4,6 +4,7 @@
 """
 This is for crawling proxy ip from ip website.
 """
+from proxy import const
 
 
 class Spider(object):
@@ -11,12 +12,12 @@ class Spider(object):
     This is the class for crawling ip from proxy site
     """
 
-    def get_proxies(self, url, params=None, https=False):
+    def get_proxies(self, url, protocols=None, **kwargs):
         """
         Return proxies
         :param url: url
-        :param params: params
-        :param https: https
+        :param protocols: protocols
         :return: status, msg, proxies_list
         """
+        protocols = [const.HTTP, ]
         return False, "", []
