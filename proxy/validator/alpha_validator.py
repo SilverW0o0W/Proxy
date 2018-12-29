@@ -2,10 +2,8 @@
 # -*- encoding: utf-8 -*-
 
 import requests
+from proxy import const
 from proxy.validator.validator import Validator
-
-http_url = ""
-https_url = ""
 
 
 class IPValidator(Validator):
@@ -18,8 +16,12 @@ class IPValidator(Validator):
         """
         Check proxy available. Timeout: 15s. Retry: 3 times.
         """
-        proxies = {transfer_method: str(proxy)}
-        requests.adapters.DEFAULT_RETRIES = 3
+        protocol = proxy.protocol
+        if protocol == const.HTTPS:
+            proxies = {'HTTPS': str(proxy)}
+        else:
+            proxies = {'HTTP': str(proxy)}
+
         with requests.Session() as session:
             try:
                 session.keep_alive = False

@@ -42,13 +42,23 @@ class XiciSpider(Spider):
         soup = BeautifulSoup(response.text, "html.parser")
         ip_table = soup.find(id='ip_list')
         ips = ip_table.findAll('tr')
-        proxies = list(filter(None, [cls.convert_proxy(ip) for ip in ips[1:]]))
-        return [proxy for proxy in proxies if proxy.https == https] if https else proxies
+        proxies = []
+        for ip in ips[1:]:
+            for protocol in protocols:
+                status, proxy = cls.convert_proxy(ip, protocol)
+                if status:
+                    proxies.append(proxy)
+
+        return proxies
 
     @staticmethod
-    def convert_proxy(ip):
-        tds = ip.findAll("td")
-        if not tds[4].contents[0] == '高匿':
-            return
-        is_https = tds[5].contents[0] == 'HTTPS'
-        return Proxy(tds[1].contents[0], tds[2].contents[0], is_https)
+    def convert_proxy(ip, protocol):
+        try:
+            tds = ip.findAll("td")
+            if protocol == const.HTTPS and tds[5].contents[0] == 'HTTP':
+                return False, None
+            if not tds[4].contents[0] == '高匿':
+                return False, None
+            return Proxy(tds[1].contents[0], int(tds[2].contents[0]), protocol)
+        except Exception:
+            return False, None
