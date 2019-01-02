@@ -9,5 +9,5 @@ Check proxy available
 class Validator(object):
 
     @staticmethod
-    def check_proxy():
+    def check_proxy(proxy):
         return 0
