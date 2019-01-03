@@ -24,13 +24,14 @@ class XiciSpider(Spider):
     _https_url = 'http://www.xicidaili.com/wn/'
     _anon_url = 'http://www.xicidaili.com/nn/'
 
-    def get_proxies(self, url, protocols=None, **kwargs):
+    def get_proxies(self, url, protocols=None, proxies=None, **kwargs):
         """
         Get proxy ip
         """
         protocols = [const.HTTP, ] if protocols is None else protocols
+        proxies = {} if proxies is None else proxies
         try:
-            response = requests.get(url, headers=self._header)
+            response = requests.get(url, headers=self._header, proxies=proxies)
             if response.status_code != 200:
                 return False, "", []
             return True, "", self.convert_proxies(response, protocols)

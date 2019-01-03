@@ -15,7 +15,6 @@ from gevent import monkey, pool as g_pool
 
 import requests
 
-from .spider import Spider
 from .alchemy import DBWorker
 
 from bs4 import BeautifulSoup
