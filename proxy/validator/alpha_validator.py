@@ -33,7 +33,7 @@ class IPValidator(Validator):
             except requests.exceptions.RequestException:
                 available = False
             except Exception as ex:
-                print(ex)
+                available = False
         return available
 
     @staticmethod
