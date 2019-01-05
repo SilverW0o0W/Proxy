@@ -1,13 +1,13 @@
 # coding=utf-8
 import unittest
-from proxy.spider.xici_spider import XiciSpider
+from proxy.spider.kuai_spider import KuaiSpider
 
 
 class TestSpider(unittest.TestCase):
 
     def test_get_proxies(self):
-        spider = XiciSpider()
-        proxies = spider.get_proxies(False)
+        spider = KuaiSpider()
+        status, msg, proxies = spider.get_proxies(1)
         self.assertTrue(True, proxies)
 
 
