@@ -15,4 +15,4 @@ class Proxy(object):
         self.verified_time = verified_time
 
     def __str__(self):
-        return self.ip + ':' + self.port
+        return "{}:{}".format(self.ip, self.port)

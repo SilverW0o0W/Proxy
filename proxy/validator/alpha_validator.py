@@ -19,33 +19,32 @@ class IPValidator(Validator):
         """
         protocol = proxy.protocol
         if protocol == const.HTTPS:
-            proxies = {'HTTPS': str(proxy)}
-            url = ""
+            proxies = {'https': str(proxy)}
+            url = "https://api.ipify.org/"
         else:
-            proxies = {'HTTP': str(proxy)}
-            url = ""
+            proxies = {'http': str(proxy)}
+            url = "http://api.ipify.org/"
 
         with requests.Session() as session:
             try:
                 session.keep_alive = False
-                response = session.get(url, proxies=proxies, timeout=15, verify=False)
-                proxy.available = cls.check_response(response, url)
+                response = session.get(url, proxies=proxies, timeout=15, allow_redirects=False, verify=False)
+                available = cls.check_response(proxy, response)
             except requests.exceptions.RequestException:
-                proxy.available = False
+                available = False
             except Exception as ex:
                 print(ex)
-        return proxy.available
+        return available
 
     @staticmethod
-    def check_response(response, url):
+    def check_response(proxy, response):
         """
         Check response content
         :param response:
-        :param url:
         :return: is valid proxy
         """
         # Check 1st: response status == 200 and url is right
-        if response.status_code != 200 or response.url != url:
+        if response.status_code != 200 or response.url != response.request.url:
             return False
         # Check 2nd: response content is real
-        return 0
+        return proxy.ip == response.text

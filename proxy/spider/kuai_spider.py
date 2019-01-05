@@ -42,7 +42,7 @@ class KuaiSpider(Spider):
             values = ip.xpath("td/text()")
             status, proxy = cls.convert_proxy(values)
             if status:
-                proxies.extend(proxy)
+                proxies.append(proxy)
 
         return proxies
 
