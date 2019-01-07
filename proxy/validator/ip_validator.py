@@ -16,7 +16,7 @@ class IPValidator(Validator):
         pass
 
     @classmethod
-    def check_proxy(cls, proxy, first=False, ):
+    def check_proxy(cls, proxy):
         """
         Check proxy available. Timeout: 15s. Retry: 3 times.
         """
