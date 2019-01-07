@@ -1,7 +1,6 @@
 # coding=utf-8
-"""
-This is for controlling proxy ip
-"""
+
+from proxy import const
 
 
 class Proxy(object):
@@ -16,3 +15,8 @@ class Proxy(object):
 
     def __str__(self):
         return "{}:{}".format(self.ip, self.port)
+
+    def to_proxies(self):
+        return {
+            "http" if self.protocol == const.HTTP else "https": str(self)
+        }
