@@ -2,13 +2,10 @@ from setuptools import setup, find_packages
 
 setup(
     name="Proxy",
-    version="0.1",
+    version="0.0.2",
     packages=find_packages(),
     install_requires=[
-        'beautifulsoup4',
         'requests',
-        'gevent',
-        'sqlalchemy',
     ],
 
     url="https://github.com/SilverW0o0W/Proxy",
@@ -16,7 +13,4 @@ setup(
     author_email="silver.codingcat@gmail.com",
     license='MIT',
     description="",
-
-    entry_points={
-    }
 )
