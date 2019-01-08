@@ -2,10 +2,10 @@
 # -*- encoding: utf-8 -*-
 
 from proxy import const
-from proxy.validator.validator import Validator
+from proxy.validator.validator import ValidatorBase
 
 
-class IPValidator(Validator):
+class IPValidator(ValidatorBase):
     url_mapping = {
         const.HTTP: "https://api.ipify.org/",
         const.HTTPS: "https://api.ipify.org/",

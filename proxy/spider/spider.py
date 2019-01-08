@@ -7,7 +7,7 @@ This is for crawling proxy ip from ip website.
 from proxy import const
 
 
-class Spider(object):
+class SpiderBase(object):
     """
     This is the class for crawling ip from proxy site
     """

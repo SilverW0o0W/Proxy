@@ -10,11 +10,11 @@ import requests
 from lxml import etree
 from bs4 import BeautifulSoup
 from proxy import const
-from proxy.spider.spider import Spider
+from proxy.spider.spider import SpiderBase
 from proxy.proxy import Proxy
 
 
-class KuaiSpider(Spider):
+class KuaiSpider(SpiderBase):
     _user_agent = 'Mozilla/5.0 (Windows NT 6.3; WOW64; rv:43.0) Gecko/20100101 Firefox/43.0'
     _header = {'User-Agent': _user_agent}
     ha_url_model = 'https://www.kuaidaili.com/free/inha/{}'

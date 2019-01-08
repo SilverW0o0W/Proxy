@@ -8,7 +8,7 @@ Check proxy available
 """
 
 
-class Validator(object):
+class ValidatorBase(object):
     timeout = 15
 
     @staticmethod
