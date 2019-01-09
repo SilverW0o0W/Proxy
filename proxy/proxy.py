@@ -17,6 +17,7 @@ class Proxy(object):
         return "{}:{}".format(self.ip, self.port)
 
     def to_proxies(self):
+        protocol = "http" if self.protocol == const.HTTP else "https"
         return {
-            "http" if self.protocol == const.HTTP else "https": str(self)
+            protocol: "{}://{}".format(protocol, self)
         }

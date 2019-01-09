@@ -24,7 +24,7 @@ class IPValidator(ValidatorBase):
         url = cls.url_mapping[protocol]
         proxies = proxy.to_proxies()
         status, response = cls.request_response(url, proxies)
-        return cls.check_proxy(proxy, response) if status else status
+        return cls.check_response(proxy, response) if status else status
 
     @staticmethod
     def check_response(proxy, response):
