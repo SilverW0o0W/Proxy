@@ -5,16 +5,13 @@
 This is for crawling proxy ip from ip website.
 """
 from proxy import const
+from proxy.pool.pool import PoolBase
 
 
-class PoolBase(object):
+class ScorePool(PoolBase):
     """
     This is the class for crawling ip from proxy site
     """
-
-    def __init__(self, spider, validator):
-        self.spider = spider
-        self.validator = validator
 
     def get_proxies(self, protocol=const.HTTP, string=False):
         """
