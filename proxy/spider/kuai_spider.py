@@ -5,11 +5,11 @@ This is for crawling proxy ip from ip website.
 """
 
 import traceback
-
 import requests
+
 from lxml import etree
-from bs4 import BeautifulSoup
 from proxy import const
+# from proxy import requests
 from proxy.spider.spider import SpiderBase
 from proxy.proxy import Proxy
 

@@ -19,5 +19,4 @@ class SpiderBase(object):
         :param protocols: protocols
         :return: status, msg, proxies_list
         """
-        protocols = [const.HTTP, ]
         return False, "", []
