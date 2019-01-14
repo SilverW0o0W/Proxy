@@ -5,11 +5,10 @@ This is for crawling proxy ip from ip website.
 """
 
 import traceback
-import requests
 
 from lxml import etree
 from proxy import const
-# from proxy import requests
+from proxy import requests
 from proxy.spider.spider import SpiderBase
 from proxy.proxy import Proxy
 
@@ -19,17 +18,18 @@ class KuaiSpider(SpiderBase):
     _header = {'User-Agent': _user_agent}
     ha_url_model = 'https://www.kuaidaili.com/free/inha/{}'
 
-    def get_proxies(self, page, protocols=None, proxies=None, **kwargs):
+    @classmethod
+    def get_proxies(cls, page, protocols=None, proxies=None, **kwargs):
         """
         Get proxy ip
         """
         proxies = {} if proxies is None else proxies
         try:
-            url = self.ha_url_model.format(page)
-            response = requests.get(url, headers=self._header, proxies=proxies)
-            if response.status_code != 200:
+            url = cls.ha_url_model.format(page)
+            status, response = requests.request("GET", url, verify=False, headers=cls._header, proxies=proxies)
+            if status and response.status_code != 200:
                 return False, "", []
-            return True, "", self.convert_proxies(response)
+            return True, "", cls.convert_proxies(response)
         except Exception:
             return False, traceback.format_exc(), []
 
