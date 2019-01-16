@@ -17,7 +17,6 @@ def request(method, url, _async=True, **kwargs):
         else:
             with requests.Session() as session:
                 response = session.request(method, url, **kwargs)
-                # proxies=proxies, timeout=timeout, allow_redirects=False, verify=False
         status = response.status_code == 200 and response.url == response.request.url
     except requests.exceptions.RequestException:
         status = False
