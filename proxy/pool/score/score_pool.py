@@ -21,3 +21,6 @@ class ScorePool(PoolBase):
         :return: proxies
         """
         return []
+
+    def check_proxies(self, proxies):
+        pass
