@@ -6,6 +6,7 @@ This is for crawling proxy ip from ip website.
 """
 from proxy import const
 from proxy.pool.pool import PoolBase
+import redis
 
 
 class ScorePool(PoolBase):
