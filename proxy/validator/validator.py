@@ -17,4 +17,4 @@ class ValidatorBase(object):
 
     @classmethod
     def request_response(cls, url, proxies):
-        return requests.request_by_proxy("GET", url, proxies, timeout=cls.timeout)
+        return requests.request("GET", url, proxies, timeout=cls.timeout)

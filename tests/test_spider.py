@@ -7,7 +7,7 @@ class TestSpider(unittest.TestCase):
 
     def test_get_proxies(self):
         spider = KuaiSpider()
-        status, msg, proxies = spider.get_proxies(1)
+        status, msg, proxies = spider.get_proxies()
         self.assertTrue(True, proxies)
 
 

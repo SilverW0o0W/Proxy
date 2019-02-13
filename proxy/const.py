@@ -8,3 +8,8 @@ PROTOCOLS_MAP = {
     HTTP: 'HTTP',
     HTTPS: 'HTTPS',
 }
+
+SUCCESS = 1
+WARN = 2
+ERROR = 3
+FATAL = 4
