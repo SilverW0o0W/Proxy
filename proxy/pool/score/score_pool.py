@@ -28,4 +28,4 @@ class ScorePool(PoolBase):
     def crawl(self):
         status, msg, proxies = self.spider.get_proxies()
         for proxy in proxies:
-            self.validator.check_proxy()
+            self.validator.check_proxy(proxy)
