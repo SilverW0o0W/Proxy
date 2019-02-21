@@ -6,7 +6,7 @@ import requests
 
 
 def request(method, url, _async=True, **kwargs):
-    status, response = False, None
+    response = None
     try:
         if _async:
             req = grequests.request(method, url, **kwargs)
@@ -17,8 +17,8 @@ def request(method, url, _async=True, **kwargs):
         else:
             with requests.Session() as session:
                 response = session.request(method, url, **kwargs)
-        status = response.status_code == 200 and response.url == response.request.url
+        # status = response.status_code == 200 and response.url == response.request.url
     except requests.exceptions.RequestException:
-        status = False
+        response = None
     finally:
-        return status, response
+        return response

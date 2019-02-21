@@ -23,10 +23,18 @@ class IPValidator(ValidatorBase):
         protocol = proxy.protocol
         url = cls.url_mapping[protocol]
         proxies = proxy.to_proxies()
-        status, response = cls.request_response(url, proxies)
-        if not status:
-            return
-        return cls.check_response(proxy, response) if status else status
+        try:
+            response = cls.request_response(url, proxies)
+            if response:
+                if response.status_code == 200:
+                    status = const.SUCCESS if cls.check_response(proxy, response) else const.FATAL
+                else:
+                    status = const.WARN
+            else:
+                status = const.ERROR
+        except Exception:
+            status = const.FATAL
+        return status
 
     @staticmethod
     def check_response(proxy, response):
@@ -36,4 +44,4 @@ class IPValidator(ValidatorBase):
         :param response:
         :return: is valid proxy
         """
-        return proxy.ip == response.text
+        return response.url == response.request.url and proxy.ip == response.text
