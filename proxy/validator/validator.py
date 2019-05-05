@@ -16,5 +16,5 @@ class ValidatorBase(object):
         return 0
 
     @classmethod
-    def request_response(cls, url, proxies):
+    def get(cls, url, proxies):
         return requests.request("GET", url, proxies, timeout=cls.timeout)

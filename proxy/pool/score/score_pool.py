@@ -13,6 +13,13 @@ class ScorePool(PoolBase):
     This is the class for crawling ip from proxy site
     """
 
+    STATUS_SCORE = {
+        const.SUCCESS: 2,
+        const.WARN: -2,
+        const.ERROR: -5,
+        const.FATAL: -20,
+    }
+
     def get_proxies(self, protocol=const.HTTP, string=False):
         """
         Return proxies
@@ -28,4 +35,4 @@ class ScorePool(PoolBase):
     def crawl(self):
         status, msg, proxies = self.spider.get_proxies()
         for proxy in proxies:
-            self.validator.check_proxy(proxy)
+            status = self.validator.check_proxy(proxy)
