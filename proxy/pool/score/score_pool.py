@@ -27,12 +27,12 @@ class ScorePool(PoolBase):
 
     STATUS_SCORE = {
         const.SUCCESS: 2,
-        const.WARN: -2,
-        const.ERROR: -5,
+        const.WARN: -5,
+        const.ERROR: -10,
         const.FATAL: -20,
     }
 
-    def get_proxies(self, protocol=const.HTTP, string=False):
+    def get_proxies(self, string=False):
         """
         Return proxies
         :param: string:
@@ -47,7 +47,7 @@ class ScorePool(PoolBase):
     def crawl(self):
         status, msg, proxies = self.spider.get_proxies()
         now = time.time()
-        checked_proxies = [
+        return [
             self.build_score_proxy(proxy, 20, now, now)
             for proxy in proxies
             if self.validator.check_proxy(proxy) == const.SUCCESS

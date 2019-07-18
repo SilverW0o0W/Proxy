@@ -12,12 +12,11 @@ class PoolBase(object):
     This is the class for crawling ip from proxy site
     """
 
-    def __init__(self, spider, validator, protocol=const.HTTP):
+    def __init__(self, spider, validator):
         self.spider = spider
         self.validator = validator
-        self.protocol = protocol
 
-    def get_proxies(self, protocol=const.HTTP, string=False):
+    def get_proxies(self, string=False):
         """
         Return proxies
         :param: string:
