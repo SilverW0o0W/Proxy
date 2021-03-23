@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 # -*- encoding: utf-8 -*-
 
-from proxy import const
-from proxy.validator.validator import Validator
+from src.proxy import const
+from src.proxy.validator.validator import Validator
 
 
 class IPValidator(Validator):

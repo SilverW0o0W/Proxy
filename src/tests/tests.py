@@ -2,7 +2,7 @@
 import traceback
 # import test_alchemy
 # import test_spider
-import proxy.proxy as pool
+from src.proxy import proxy as pool
 import time
 
 

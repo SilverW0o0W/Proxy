@@ -1,6 +1,6 @@
 # coding=utf-8
 import unittest
-from proxy.spider.kuai_spider import KuaiSpider
+from src.proxy.spider.kuai_spider import KuaiSpider
 
 
 class TestSpider(unittest.TestCase):

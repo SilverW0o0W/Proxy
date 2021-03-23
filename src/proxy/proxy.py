@@ -1,6 +1,6 @@
 # coding=utf-8
 
-from proxy import const
+from src.proxy import const
 
 
 class Proxy(object):
