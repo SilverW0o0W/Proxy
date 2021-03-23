@@ -8,9 +8,9 @@ import traceback
 
 import requests
 from lxml import etree
-from src.proxy import const
-from src.proxy.spider import Spider
-from src.proxy.proxy import Proxy
+from proxy import const
+from proxy.spider import Spider
+from proxy.proxy import Proxy
 
 
 class KuaiSpider(Spider):

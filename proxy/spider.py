@@ -4,7 +4,7 @@
 """
 This is for crawling proxy ip from ip website.
 """
-from src.proxy import const
+from proxy import const
 
 
 class Spider(object):

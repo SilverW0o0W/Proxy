@@ -1,8 +1,8 @@
 # coding=utf-8
 import unittest
-from src.proxy import const
-from src.proxy.proxy import Proxy
-from src.proxy.validator import IPValidator
+from proxy import const
+from proxy.proxy import Proxy
+from proxy.validators import IPValidator
 
 
 class TestValidator(unittest.TestCase):
