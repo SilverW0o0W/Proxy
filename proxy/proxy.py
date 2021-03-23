@@ -5,7 +5,7 @@ from proxy import const
 
 class Proxy(object):
 
-    def __init__(self, ip, port, protocol):
+    def __init__(self, ip=None, port=None, protocol=None):
         self.ip = ip
         self.port = port
         self.protocol = protocol

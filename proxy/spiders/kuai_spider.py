@@ -18,7 +18,7 @@ class KuaiSpider(Spider):
     _header = {'User-Agent': _user_agent}
     ha_url_model = 'https://www.kuaidaili.com/free/inha/{}'
 
-    def get_proxies(self, page, protocols=None, proxies=None, **kwargs):
+    def get_proxies(self, page=1, protocols=None, proxies=None, **kwargs):
         """
         Get proxy ip
         """
@@ -29,8 +29,8 @@ class KuaiSpider(Spider):
             if response.status_code != 200:
                 return False, "", []
             return True, "", self.convert_proxies(response)
-        except Exception:
-            return False, traceback.format_exc(), []
+        except BaseException as ex:
+            return False, str(ex), []
 
     @classmethod
     def convert_proxies(cls, response):
@@ -53,5 +53,5 @@ class KuaiSpider(Spider):
                 int(values[1]),
                 const.HTTP
             )
-        except Exception:
+        except BaseException:
             return False, None
