@@ -11,7 +11,7 @@ from proxy.spider import Spider
 from proxy.proxy import Proxy
 
 
-class KuaiSpider(Spider):
+class Fate0Spider(Spider):
     _user_agent = 'Mozilla/5.0 (Windows NT 6.3; WOW64; rv:43.0) Gecko/20100101 Firefox/43.0'
     _header = {'User-Agent': _user_agent}
     proxy_url = "https://raw.githubusercontent.com/fate0/proxylist/master/proxy.list"
@@ -63,9 +63,3 @@ class KuaiSpider(Spider):
             return False, None
         else:
             return True, proxy
-
-
-if __name__ == '__main__':
-    s = KuaiSpider()
-    a, b, c = s.get_proxies()
-    pass
