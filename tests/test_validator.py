@@ -2,7 +2,7 @@
 import unittest
 from proxy import const
 from proxy.proxy import Proxy
-from proxy.validators import IPValidator
+from proxy.validators.ip_validator import IPValidator
 
 
 class TestValidator(unittest.TestCase):
