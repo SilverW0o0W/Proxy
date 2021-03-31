@@ -6,7 +6,7 @@ import io
 import json
 
 import requests
-from proxy import const
+from proxy.const import const
 from proxy.spider import Spider
 from proxy.proxy import Proxy
 

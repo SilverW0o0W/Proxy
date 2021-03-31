@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- encoding: utf-8 -*-
 
-from proxy import const
+from proxy.const import const
 from proxy.validator import Validator
 
 

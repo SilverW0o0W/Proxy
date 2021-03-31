@@ -1,6 +1,6 @@
 # coding=utf-8
 import unittest
-from proxy import const
+from proxy.const import const
 from proxy.proxy import Proxy
 from proxy.validators.ip_validator import IPValidator
 

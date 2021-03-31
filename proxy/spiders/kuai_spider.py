@@ -8,7 +8,8 @@ import traceback
 
 import requests
 from lxml import etree
-from proxy import const
+
+from proxy.const import const
 from proxy.spider import Spider
 from proxy.proxy import Proxy
 
