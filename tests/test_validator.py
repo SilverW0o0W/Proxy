@@ -8,7 +8,7 @@ from proxy.validators.ip_validator import IPValidator
 class TestValidator(unittest.TestCase):
 
     def test_get_proxies(self):
-        validator = IPValidator()
+        validator = IPValidator("")
         test_proxy = Proxy('127.0.0.1', 8080, const.HTTP)
         status = validator.check_proxy(test_proxy)
         self.assertTrue(True, status)
