@@ -9,10 +9,9 @@ from proxy.validator import Validator
 
 class IPValidator(Validator):
     url_mapping = {
-        const.HTTP: None,
+        const.HTTP: "http://api.ipify.org/",
         const.HTTPS: "https://api.ipify.org/",
     }
-    http_url = "http://api.ipify.org/"
 
     def __init__(self, local_ip):
         self.local_ip = local_ip
@@ -38,5 +37,5 @@ class IPValidator(Validator):
         pattern = re.compile(r'((2(5[0-5]|[0-4]\d))|[0-1]?\d{1,2})(\.((2(5[0-5]|[0-4]\d))|[0-1]?\d{1,2})){3}')
         if not pattern.match(ip_text):
             return False
-        
+
         return self.local_ip != response.text
